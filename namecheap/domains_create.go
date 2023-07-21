@@ -24,51 +24,100 @@ type DomainsCreateResult struct {
 	ChargedAmount *string `xml:"ChargedAmount,attr"`
 }
 
-func (ds *DomainsService) DomainsCreate(domainName string) (*DomainsCreateCommandResponse, error) {
+type DomainCreateInfo struct {
+	Years string
+
+	RegistrantFirstName     string
+	RegistrantLastName      string
+	RegistrantAddress1      string
+	RegistrantCity          string
+	RegistrantStateProvince string
+	RegistrantPostalCode    string
+	RegistrantCountry       string
+	RegistrantPhone         string
+	RegistrantEmailAddress  string
+
+	TechFirstName string
+
+	TechLastName      string
+	TechAddress1      string
+	TechCity          string
+	TechStateProvince string
+	TechPostalCode    string
+	TechCountry       string
+	TechPhone         string
+	TechEmailAddress  string
+
+	AdminFirstName     string
+	AdminLastName      string
+	AdminAddress1      string
+	AdminCity          string
+	AdminStateProvince string
+	AdminPostalCode    string
+	AdminCountry       string
+	AdminPhone         string
+	AdminEmailAddress  string
+
+	AuxBillingFirstName     string
+	AuxBillingAddress1      string
+	AuxBillingCity          string
+	AuxBillingStateProvince string
+	AuxBillingPostalCode    string
+	AuxBillingCountry       string
+	AuxBillingPhone         string
+	AuxBillingEmailAddress  string
+}
+
+func (ds *DomainsService) DomainsCreate(domainName string, info DomainCreateInfo) (*DomainsCreateCommandResponse, error) {
 
 	var response DomainsCreateResponse
 
 	params := map[string]string{
-		"Command":                 "namecheap.domains.create",
-		"DomainName":              domainName,
-		"Years":                   "2",
-		"RegistrantFirstName":     "2",
-		"RegistrantLastName":      "2",
-		"RegistrantAddress1":      "2",
-		"RegistrantCity":          "2",
-		"RegistrantStateProvince": "2",
-		"RegistrantPostalCode":    "2",
-		"RegistrantCountry":       "2",
-		"RegistrantPhone":         "2",
-		"RegistrantEmailAddress":  "2",
-		"TechFirstName":           "2",
-		"TechLastName":            "2",
-		"TechAddress1":            "2",
-		"TechCity":                "2",
-		"TechStateProvince":       "2",
-		"TechPostalCode":          "2",
-		"TechCountry":             "2",
-		"TechPhone":               "2",
-		"TechEmailAddress":        "2",
-		"AdminFirstName":          "2",
-		"AdminLastName":           "2",
-		"AdminAddress1":           "2",
-		"AdminCity":               "2",
-		"AdminStateProvince":      "2",
-		"AdminPostalCode":         "2",
-		"AdminCountry":            "2",
-		"AdminPhone":              "2",
-		"AdminEmailAddress":       "2",
-		"AuxBillingFirstName":     "2",
-		"AuxBillingAddress1":      "2",
-		"AuxBillingCity":          "2",
-		"AuxBillingStateProvince": "2",
-		"AuxBillingPostalCode":    "2",
-		"AuxBillingCountry":       "2",
-		"AuxBillingPhone":         "2",
-		"AuxBillingEmailAddress":  "2",
-		"Extended attributes":     "2",
-		"Nameservers":             "2",
+		"Command":    "namecheap.domains.create",
+		"DomainName": domainName,
+
+		"Years":                   info.Years,
+		"RegistrantFirstName":     info.RegistrantFirstName,
+		"RegistrantLastName":      info.RegistrantLastName,
+		"RegistrantAddress1":      info.RegistrantAddress1,
+		"RegistrantCity":          info.RegistrantCity,
+		"RegistrantStateProvince": info.RegistrantStateProvince,
+		"RegistrantPostalCode":    info.RegistrantPostalCode,
+		"RegistrantCountry":       info.RegistrantCountry,
+		"RegistrantPhone":         info.RegistrantPhone,
+		"RegistrantEmailAddress":  info.RegistrantEmailAddress,
+
+		"TechFirstName":     info.TechFirstName,
+		"TechLastName":      info.TechLastName,
+		"TechAddress1":      info.TechAddress1,
+		"TechCity":          info.TechCity,
+		"TechStateProvince": info.TechStateProvince,
+		"TechPostalCode":    info.TechPostalCode,
+		"TechCountry":       info.TechCountry,
+		"TechPhone":         info.TechPhone,
+		"TechEmailAddress":  info.TechEmailAddress,
+
+		"AdminFirstName":     info.AdminFirstName,
+		"AdminLastName":      info.AdminLastName,
+		"AdminAddress1":      info.AdminAddress1,
+		"AdminCity":          info.AdminCity,
+		"AdminStateProvince": info.AdminStateProvince,
+		"AdminPostalCode":    info.AdminPostalCode,
+		"AdminCountry":       info.AdminCountry,
+		"AdminPhone":         info.AdminPhone,
+		"AdminEmailAddress":  info.AdminEmailAddress,
+
+		"AuxBillingFirstName":     info.AuxBillingFirstName,
+		"AuxBillingAddress1":      info.AuxBillingAddress1,
+		"AuxBillingCity":          info.AuxBillingCity,
+		"AuxBillingStateProvince": info.AuxBillingStateProvince,
+		"AuxBillingPostalCode":    info.AuxBillingPostalCode,
+		"AuxBillingCountry":       info.AuxBillingCountry,
+		"AuxBillingPhone":         info.AuxBillingPhone,
+		"AuxBillingEmailAddress":  info.AuxBillingEmailAddress,
+
+		"Extended attributes": "",
+		"Nameservers":         "",
 	}
 	_, err := ds.client.DoXML(params, &response)
 
