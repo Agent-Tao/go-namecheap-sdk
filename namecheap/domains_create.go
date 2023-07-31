@@ -108,6 +108,7 @@ func (ds *DomainsService) DomainsCreate(domainName string, info DomainCreateInfo
 		"AdminEmailAddress":  info.AdminEmailAddress,
 
 		"AuxBillingFirstName":     info.AuxBillingFirstName,
+		"AuxBillingLastName":      info.AuxBillingLastName,
 		"AuxBillingAddress1":      info.AuxBillingAddress1,
 		"AuxBillingCity":          info.AuxBillingCity,
 		"AuxBillingStateProvince": info.AuxBillingStateProvince,
