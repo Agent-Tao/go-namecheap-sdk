@@ -37,8 +37,7 @@ type DomainCreateInfo struct {
 	RegistrantPhone         string
 	RegistrantEmailAddress  string
 
-	TechFirstName string
-
+	TechFirstName     string
 	TechLastName      string
 	TechAddress1      string
 	TechCity          string
@@ -59,6 +58,7 @@ type DomainCreateInfo struct {
 	AdminEmailAddress  string
 
 	AuxBillingFirstName     string
+	AuxBillingLastName      string
 	AuxBillingAddress1      string
 	AuxBillingCity          string
 	AuxBillingStateProvince string
